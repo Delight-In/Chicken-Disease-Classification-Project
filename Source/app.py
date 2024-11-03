@@ -1,6 +1,7 @@
 import pickle
 import streamlit as st
 import requests
+from constant import API
 
 def fetch_poster(movie_id):
     url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US"
@@ -51,7 +52,7 @@ if st.button('Show Recommendation'):
             st.image(poster)
 
 # Load popular movies
-popular_movies = pickle.load(open('G:/Movie_Recommendation_System/Source/Preprocess/psopularity.pkl', 'rb'))
+popular_movies = pickle.load(open('G:/Movie_Recommendation_System/Source/Preprocess/popularity.pkl', 'rb'))
 
 # Display top 10 popular movies
 st.subheader('Top 10 Popular Movies')
@@ -60,8 +61,9 @@ top_popular_movies = popular_movies.sort_values(by='popularity', ascending=False
 # Create 3 columns for popular movies
 cols = st.columns(3)  # Create 3 columns for popular movies
 for index, row in top_popular_movies.iterrows():
-    poster = fetch_poster(row['id'])  # Assuming 'id' is the movie ID in your popularity DataFrame
+    poster = fetch_poster(row['id'])
     if poster:
         with cols[index % 3]:  # Use modulo to distribute movies into columns
             st.text(row['title'])
             st.image(poster)
+
