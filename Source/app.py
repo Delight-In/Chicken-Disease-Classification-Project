@@ -4,7 +4,7 @@ import requests
 from constant import API
 
 def fetch_poster(movie_id):
-    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US"
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API}language=en-US"
     data = requests.get(url)
     data = data.json()
     poster_path = data.get('poster_path')
