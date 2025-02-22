@@ -2,4 +2,4 @@
 \similarity.pkl
 \popularity.pkl
 constant.py
-Raw_Dataset/
+*.csv
