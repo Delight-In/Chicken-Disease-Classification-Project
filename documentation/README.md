@@ -25,3 +25,5 @@ Prerequisits
 2. DL (object classifications and tensorflow 2.x API)
 3. AWS and AZURE account setup
 
+#### environment setup
+* conda create -n venv python=3.8 -y

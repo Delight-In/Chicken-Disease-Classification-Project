@@ -7,7 +7,7 @@ scipy
 Flask
 Flask-Cors
 dvc
-notebook
+ipykernel
 python-box==6.0.2
 PyYAML
 tqdm
