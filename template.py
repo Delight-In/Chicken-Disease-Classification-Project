@@ -10,8 +10,15 @@ temp = [
     ".github/workflows/.gitkeep",
     f'{main_dir}/__init__.py',
     f'{main_dir}/components/__init__.py',
+    f'{main_dir}/components/data_ingestion.py',
+    f'{main_dir}/components/model_creation.py',
+    f'{main_dir}/components/prepare_callback.py',
+    f'{main_dir}/components/model_training.py',
+    f'{main_dir}/components/model_evaluation.py',
     f'{main_dir}/utils/__init__.py',
     f'{main_dir}/pipeline/__init__.py',
+    f'{main_dir}/pipeline/training_pipeline.py',
+    f'{main_dir}/pipeline/prediction_pipeline.py',
     f'{main_dir}/entity/__init__.py',
     f'{main_dir}/constants/__init__.py',
     f'{main_dir}/config/configration/__init__.py',
@@ -24,7 +31,8 @@ temp = [
     ".gitignore",
     "research/notebook.ipynb",
     "templates/index.html",
-    "static/style.css"
+    "static/style.css",
+    "static/style.js"
 ]
 
 for filpath in temp:
