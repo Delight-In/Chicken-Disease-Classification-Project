@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO, format="[%(asctime)s]: %(message)s")
 main_dir = "src"
 
 temp = [
-    ".github/workflows/.gitkeep",
+    ".github/workflows/main.yaml",
     f'{main_dir}/__init__.py',
     f'{main_dir}/components/__init__.py',
     f'{main_dir}/components/data_ingestion.py',
@@ -28,6 +28,7 @@ temp = [
     "requirements.txt",
     "setup.py",
     "main.py",
+    "app.py",
     "README.md",
     ".gitignore",
     "research/notebook.ipynb",
