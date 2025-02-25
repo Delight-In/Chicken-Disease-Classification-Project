@@ -1,0 +1,84 @@
+Project flow in steps:
+
+1) Create Project folder and documentation folder in it.
+2) Github repo intialization.
+3) Create template.py file.
+4) Complete setup.py, requirements, env creation.
+5) Download requirements in env: pip install -r requirements.txt
+6) Write trail code in 'notebook.ipynb' for different Project components.
+7) Ingestion modular code starts:
+      * write entity code
+      * write configuration code
+      * write components code
+      * write pipeline code
+      * write main file code to run entire configuration
+8) repeat 7th steps for all other components.
+9) Complete prediction pipeline
+10) Complete dvc(data version control) file for pipeline management.
+11) Create app for user using Flask
+12) Create docker file and Github workflow yaml file
+13) AWS deployments:
+      * open iam by searching in search bar of aws UI
+      * click on user in left side bar and create a new user
+      * click on attach policy directly
+      * seelect Policy:
+            1. AmazonEC2ContainerRegistryFullAccess
+            2. AmazonEC2FullAccess
+      * User is create click on it to proceed
+      * Create access secret key Command line interface(CLI)
+      * Download secret key as csv for user
+      * Search for ECR in aws search bar
+            * Create repo in ECR
+            * keep repo private
+            * after that keep url of ECR repo for further user
+      * Search for EC2 (a virtual server)
+          * click on 'launch instance' to create it
+                * give name to instance
+                * select quick as ubuntu
+                * crete key pair
+          * click on ' view all instance'
+      * click on instance id and then click on 'connect' and get a terminal
+      * run commands in terminal:
+            * # optional
+            * sudo apt-get update -y
+            * sudo apt-get upgrade
+            * #required
+            * curl -fsSL https://get.docker.com -o get-docker.sh
+            * sudo sh get-docker.sh
+            * sudo usermod -aG docker ubuntu
+            * newgrp docker
+            * check docker running or nott: docker --version
+        
+      * Configure EC2 as self-hosted runner:
+            * in Github click on:
+               * setting>actions>runner>new self hosted runner> choose os> then run command one by one
+               # run code given on github to connect github with aws in aws terminal
+       * Setup github secrets: click on secrets and variables> actions>add keys
+           * AWS_ACCESS_KEY_ID=
+           * AWS_SECRET_ACCESS_KEY=
+           * AWS_REGION = us-east-1
+           * AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
+           * ECR_REPOSITORY_NAME = simple-app
+
+        * Push all changes in repo, deployments starts
+        * to use app, click on instance and select your instance and use 'public ip address' to run
+        * set a port to run it
+        * terminate the instance if not using from EC2 and delete container created(ECR) and also iam user
+
+AZure deployments
+
+  * in app.py change port no as 80 for azure
+  * no github workflow yaml file need it create automatically
+  * push code then on github
+  * search for container registery in azure search bar
+      * create a container registery
+      * give a unique name
+  * click 'go to resource' then click on 'access key'
+  * create a web app by searching in search bar 'Create web app'.
+  * Run these commands in vscode terminal cmd:
+      * docker build -t chickenapp.azurecr.io/chicken:latest .
+      * docker login chickenapp.azurecr.io
+      * docker push chickenapp.azurecr.io/chicken:latest
+  * create a web app by searching in search bar 'Create web app'.
+  * deployments center to activate CI/CD
+* use link to run
