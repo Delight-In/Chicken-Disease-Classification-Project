@@ -27,6 +27,7 @@ temp = [
     "YAML/params.yaml",
     "requirements.txt",
     "setup.py",
+    "main.py",
     "README.md",
     ".gitignore",
     "research/notebook.ipynb",
