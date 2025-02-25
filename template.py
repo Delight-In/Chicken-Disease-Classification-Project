@@ -21,7 +21,7 @@ temp = [
     f'{main_dir}/pipeline/prediction_pipeline.py',
     f'{main_dir}/entity/__init__.py',
     f'{main_dir}/constants/__init__.py',
-    f'{main_dir}/config/configration/__init__.py',
+    f'{main_dir}/config/__init__.py',
     "config/config.yaml",
     "YAML/dvc.yaml",
     "YAML/params.yaml",
