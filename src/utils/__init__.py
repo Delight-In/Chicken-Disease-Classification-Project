@@ -14,7 +14,7 @@ import base64
 @ensure_annotations
 def read_yaml_file(path_to_yaml: Path)->ConfigBox:
     try:
-        with open("path_to_yaml", "rb") as yaml_file:
+        with open(path_to_yaml, "rb") as yaml_file:
             content = yaml.safe_load(yaml_file)
             logger.info(f'yaml file: {path_to_yaml} loaded successfully')
             return ConfigBox(content)
@@ -26,9 +26,9 @@ def read_yaml_file(path_to_yaml: Path)->ConfigBox:
 
 
 @ensure_annotations
-def create_directories(path_to_directories: list, verbose:True):
+def create_directories(path_to_directories: list, verbose=1):
     for path in path_to_directories:
-        os.makedirs(path)
+        os.makedirs(path, exist_ok=True)
         if verbose:
             logger.info(f'created directories:{path}')
 
@@ -63,11 +63,11 @@ def load_binary_file(data: Any, path: Path):
 
 
 @ensure_annotations
-def get_size_file(path: Path):
+def get_size(path: Path):
     size_in_kb = round(os.path.getsize(path)/1024)
     return f'~{size_in_kb} KB'
 
-@ensure_annotations
+
 def decodeImage(imgstr, filename):
     imagedata = base64.b64decode(imgstr)
     with open(filename, 'wb') as f:
@@ -75,7 +75,6 @@ def decodeImage(imgstr, filename):
         f.close()
 
 
-@ensure_annotations
 def encodeImageIntoBase64(croppedImagePath):
     with open(croppedImagePath, "rb") as f:
         return base64.b64encode(f.read())

@@ -1,5 +1,10 @@
 from src import logger
-from src.pipeline.training_pipeline import *
+from src.pipeline.training_pipeline import (
+                                    DataIngestionTrainingPipeline,
+                                    PrepareBaseModelTrainingPipeline,
+                                    ModelTrainingPipeline,
+                                    EvaluationPipeline
+)
 
 STAGE_NAME = "Data Ingestion stage"
 try:

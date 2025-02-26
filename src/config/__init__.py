@@ -1,7 +1,7 @@
 from src.constants import *
 import os
 from pathlib import Path
-from src.utils import read_yaml, create_directories
+from src.utils import read_yaml_file, create_directories
 from src.entity import (DataIngestionConfig,
                                                 PrepareBaseModelConfig,
                                                 PrepareCallbacksConfig,
@@ -13,8 +13,8 @@ class ConfigurationManager:
         config_filepath = CONFIG_FILE_PATH,
         params_filepath = PARAMS_FILE_PATH):
 
-        self.config = read_yaml(config_filepath)
-        self.params = read_yaml(params_filepath)
+        self.config = read_yaml_file(config_filepath)
+        self.params = read_yaml_file(params_filepath)
 
         create_directories([self.config.artifacts_root])
 
