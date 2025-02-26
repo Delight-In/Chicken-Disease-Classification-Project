@@ -1,7 +1,7 @@
 from src.entity import TrainingConfig
 import tensorflow as tf
 from pathlib import Path
-
+import os
 
 class Training:
     def __init__(self, config: TrainingConfig):
@@ -58,6 +58,8 @@ class Training:
 
     @staticmethod
     def save_model(path: Path, model: tf.keras.Model):
+        # Ensure the directory exists
+        os.makedirs(os.path.dirname(path), exist_ok=True)
         model.save(path)
 
 
@@ -75,7 +77,7 @@ class Training:
         )
 
         self.save_model(
-            path=self.config.trained_model_path,
+            path=str(self.config.trained_model_path),
             model=self.model
         )
 
